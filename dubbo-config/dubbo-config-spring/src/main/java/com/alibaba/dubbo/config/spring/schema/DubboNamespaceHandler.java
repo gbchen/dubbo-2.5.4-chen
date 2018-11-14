@@ -31,7 +31,7 @@ import org.springframework.beans.factory.xml.NamespaceHandlerSupport;
 
 /**
  * DubboNamespaceHandler
- *
+ * dubbo命名空间自定义配置文件的解析处理器
  * @author william.liangf
  * @export
  */
