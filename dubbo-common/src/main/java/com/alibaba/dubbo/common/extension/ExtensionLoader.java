@@ -108,15 +108,18 @@ public class ExtensionLoader<T> {
         if (type == null)
             throw new IllegalArgumentException("Extension type == null");
         if (!type.isInterface()) {
+            //传入的必须是接口
             throw new IllegalArgumentException("Extension type(" + type + ") is not interface!");
         }
         if (!withExtensionAnnotation(type)) {
+            //接口必须带有@SPI注解
             throw new IllegalArgumentException("Extension type(" + type +
                     ") is not extension, because WITHOUT @" + SPI.class.getSimpleName() + " Annotation!");
         }
 
         ExtensionLoader<T> loader = (ExtensionLoader<T>) EXTENSION_LOADERS.get(type);
         if (loader == null) {
+            //放到缓存里
             EXTENSION_LOADERS.putIfAbsent(type, new ExtensionLoader<T>(type));
             loader = (ExtensionLoader<T>) EXTENSION_LOADERS.get(type);
         }
